@@ -3,6 +3,20 @@
   flex-wrap: wrap;
   justify-content: space-between;
   list-style: none;
+
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-height: calc(100vh - 176px);
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 18px;
+    min-height: calc(100vh - 305px);
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-bottom: 20px;
+    min-height: calc(100vh - 304px);
+  }
 }
 
 .search__goods {
@@ -57,4 +71,11 @@
   font-weight: bold;
 
   color: #e96105;
+}
+
+.search-gallery__massage {
+  margin: 0 auto;
+  text-align: center;
+  color: #878686;
+  padding-top: 100px;
 }
