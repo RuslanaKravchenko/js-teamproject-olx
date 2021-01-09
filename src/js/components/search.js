@@ -28,6 +28,10 @@ export const getSearchQuery = async query => {
 };
 
 export const updateMarkup = goods => {
+  if (goods.length === 0) {
+    main.innerHTML = `<div class="container"><ul class="search-gallery"><p class="search-gallery__massage">По вашему запросу ничего не найдено</p></ul></div>`;
+    return;
+  }
   main.innerHTML = `<div class="container"><ul class="search-gallery">${searchCard(
     goods,
   )}</ul></div>`;
@@ -39,7 +43,9 @@ export const updateMarkup = goods => {
   function onCardClickInSearch(event) {
     if (event.target === event.currentTarget) return;
 
-    const currentCategory = camelCase(event.target.closest('li').dataset.category);
+    const currentCategory = camelCase(
+      event.target.closest('li').dataset.category,
+    );
     const targetCard = data.categoriesList[currentCategory].find(
       card => card._id === event.target.closest('li').dataset.id,
     );
@@ -84,13 +90,12 @@ export const onPressSearchIcon = async event => {
   }
 };
 
-
-export const onSubmitMobile = async event => { 
-  event.preventDefault()  
+export const onSubmitMobile = async event => {
+  event.preventDefault();
   if (headerInputMob.value.length >= 1) {
-      updateMarkup(await getSearchQuery(headerInputMob.value.toLowerCase()));
-      headerInputMob.value = '';
-    }  
+    updateMarkup(await getSearchQuery(headerInputMob.value.toLowerCase()));
+    headerInputMob.value = '';
+  }
 };
 
 headerInput.addEventListener('keydown', onPressEnterSearch);

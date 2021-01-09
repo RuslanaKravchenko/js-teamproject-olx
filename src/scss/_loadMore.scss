@@ -19,10 +19,11 @@
     height: 106px;
   }
 }
-.load-more.is-disabled{
-  background-color: #8E9198;
-  &:hover,
-  &:focus {
-    color: #5E6671;
-  }
+.load-more.is-disabled {
+  display: none;
+  // background-color: #8e9198;
+  // &:hover,
+  // &:focus {
+  //   color: #5e6671;
+  // }
 }
