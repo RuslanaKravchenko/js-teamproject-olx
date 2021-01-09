@@ -1,22 +1,20 @@
 .confirm-modal {
   background-color: #fff;
-  width: 290px;
-  height: 205px;
+  width: 100%;
   text-align: center;
   font-weight: 700;
-  padding-top: 47px;
   z-index: 99;
-  margin: -54px -20px -48px;
-  @media screen and (min-width: 768px) {
-    margin: -60px -90px -70px;
-    width: 650px;
-    height: 230px;
-    padding: 62px;
-  }
+
   &__question {
     margin-bottom: 30px;
   }
+
+  &__btns {
+    display: flex;
+    justify-content: center;
+  }
   &__btn_go {
+    margin-right: 10px;
     width: 118px;
     height: 50px;
     background-color: $accent-color;
@@ -26,6 +24,7 @@
     font-weight: 700;
     cursor: pointer;
     @media screen and (min-width: 768px) {
+      margin-right: 20px;
       width: 210px;
       height: 60px;
     }
