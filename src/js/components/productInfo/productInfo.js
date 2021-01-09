@@ -1,3 +1,4 @@
+import { camelCase } from 'lodash';
 import { openInModal } from '../modal';
 import { data } from '../../data/data';
 import { mobSlider } from './productInfoSlider';
@@ -58,7 +59,7 @@ function openProductInfo(card) {
   refs.favoritesIconRef = refs.favoritesRef.querySelector('svg');
   refs.favoritesTextRef = refs.favoritesRef.querySelector('span');
   refs.productInfoButton = document.querySelector('.productInfo__button');
-  refs.dealerTel = document.querySelector('.dealerTel')
+  refs.dealerTel = document.querySelector('.dealerTel');
 
   mobSlider(refs.dotsRef);
   isAuth(refs.activeListRef);
@@ -68,16 +69,19 @@ function openProductInfo(card) {
   }
 
   refs.maxImgRef.setAttribute('src', card.imageUrls[0]);
-  refs.minImgRef && refs.minImgRef.classList.add('productInfo__item-imgMin--active');
+  refs.minImgRef &&
+    refs.minImgRef.classList.add('productInfo__item-imgMin--active');
 
   refs.minImgListRef.addEventListener('click', onMinImgClick);
   refs.favoritesRef.addEventListener('click', onFavoritesClick.bind(card));
-  refs.productInfoButton.addEventListener('click', getDealerInfo)
+  refs.productInfoButton.addEventListener('click', getDealerInfo);
 }
 function getDealerInfo(event) {
-  const id = event.target.dataset.id
-  const category = event.target.dataset.category
-  const adv = data.categoriesList[category].find(item => item._id === id)
+  const id = event.target.dataset.id;
+  const category = event.target.dataset.category;
+  const adv = data.categoriesList[camelCase(category)].find(
+    item => item._id === id,
+  );
   refs.dealerTel.textContent = adv.phone;
 }
 
@@ -126,8 +130,12 @@ function onFavoritesClick() {
       changeFavoriteBtnOnInactive();
       // console.log('data после удаления:', data.user.favorites);
       // console.log(document.querySelector('.favorites-myGoods'));
-      if (document.querySelector('.favorites-myGoods')){
-        createMarkupFavoritesGoodsList('Избранное', data.user.favorites, 'В избранном пока пусто');
+      if (document.querySelector('.favorites-myGoods')) {
+        createMarkupFavoritesGoodsList(
+          'Избранное',
+          data.user.favorites,
+          'В избранном пока пусто',
+        );
       }
     })
     .catch(error => console.log(error));
