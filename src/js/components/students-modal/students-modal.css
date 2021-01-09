@@ -1,20 +1,17 @@
-.student {
- 
-  
-  /* top: 50%;
+/* .student { */
+/* top: 50%;
   left: 50%; */
-  /* transform: translate(-50%, -50%); */
-  /* width: 280px; */
-  /* background: rgb(255, 255, 255); */
-  /* box-shadow: 0px 8px 24px 0px red; */
-  /* padding: 10px 0; */
-  /* z-index: 0; */
-  
-}
+/* transform: translate(-50%, -50%); */
+/* width: 280px; */
+/* background: rgb(255, 255, 255); */
+/* box-shadow: 0px 8px 24px 0px red; */
+/* padding: 10px 0; */
+/* z-index: 0; */
+/* } */
 
 .student__form-title {
   font-family: 'MontserratBold';
-  font-size: 18px;
+  font-size: 20px;
   color: rgb(51, 51, 51);
   line-height: 1.2;
   text-align: start;
@@ -26,14 +23,15 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 270px;
+  /* width: 270px; */
   margin: 0 auto;
   padding-left: 0px;
 }
 .student__item {
-  width: 135px;
+  flex-basis: calc((100% - 30px) / 2);
+  /* width: 135px; */
   text-align: center;
-  font-size: 11px;
+  font-size: 12px;
   list-style-type: none;
 }
 .student__item:first-child {
@@ -41,18 +39,29 @@
 }
 
 .student__item:not(:last-child) {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
+
 .student__pic {
   border: 2px solid #ff6b08;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   margin: 0 auto;
+  margin-bottom: 10px;
   object-fit: cover;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.student__pic:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 10px 0 rgba(8, 45, 126, 0.24),
+    0 10px 30px 0 rgba(163, 17, 17, 0.19);
+}
+
 .student__name {
   font-family: 'MontserratLight', sans-serif;
+  font-weight: 700;
 }
 .footer__our-students {
   background-color: transparent;
@@ -65,6 +74,12 @@
 .footer__our-students:hover,
 .footer__our-students:focus {
   color: #fff;
+}
+
+@media (max-width: 767px) {
+  .student__item:not(:nth-child(2n)) {
+    margin-right: 30px;
+  }
 }
 @media (min-width: 768px) {
   .student {
@@ -84,14 +99,15 @@
   }
 
   .student__item {
-    width: 190px;
+    flex-basis: calc((100% - 60px) / 3);
+    /* width: 190px; */
     text-align: center;
     font-size: 14px;
   }
 
-  .student__item:first-child {
+  /* .student__item:first-child {
     width: 190px;
-  }
+  } */
 
   .student__item:not(:last-child) {
     margin-bottom: 0;
@@ -108,16 +124,15 @@
 @media (min-width: 1280px) {
   .student {
     width: 876px;
-   
-
   }
 
   .student__list {
     width: 900px;
-  } 
+  }
 
   .student__item {
-    width: 300px;
+    flex-basis: calc((100% - 60px) / 3);
+    /* width: 300px; */
     text-align: center;
     font-size: 16px;
   }
